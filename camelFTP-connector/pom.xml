@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cts.eas.ipm.connector</groupId>
+  <version>0.1.0-SNAPSHOT</version>
+  <artifactId>camelFTP-connector</artifactId>
+  <properties>
+	<camel-version>3.19.0</camel-version>
+	<version.common-module>0.1.0-SNAPSHOT</version.common-module>
+  </properties>
+  
+  	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-bom</artifactId>
+				<version>${camel-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+  <dependencies>
+	 <!-- camel dependencies -->
+	
+    <dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-bom</artifactId>
+		<version>3.19.0</version>
+		<type>pom</type>
+	</dependency>
+ 	<dependency>
+	    <groupId>org.apache.camel</groupId>
+	    <artifactId>camel-core</artifactId>
+  	</dependency>
+  	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-ftp</artifactId>
+	</dependency>
+  	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-http</artifactId>
+		<version>3.20.1</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-net</groupId>
+		<artifactId>commons-net</artifactId>
+		<version>3.9.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.yaml</groupId>
+	    <artifactId>snakeyaml</artifactId>
+	    <version>1.33</version>
+	</dependency>
+	<dependency>
+		<groupId>com.cts.eas.ipm.connector</groupId>
+		<artifactId>common-module</artifactId>
+		<version>${version.common-module}</version>
+	</dependency>
+  </dependencies>
+  
+  	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

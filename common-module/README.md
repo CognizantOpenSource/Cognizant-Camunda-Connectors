@@ -1,0 +1,2 @@
+This is common module containing commond dependencies used by all the connector implementation modules like sdk version. 
+It also contains the interface for service loader look up, used by outbound-connector module.

@@ -1,0 +1,167 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "ftp_connectorTemplate",
+  "id": "db1c9823-822f-4970-9266-0c8c2c5902ca",
+  "description": "FTP outbound connector using camel",
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:ServiceTask"
+  ],
+  "groups": [
+    {
+      "id": "FTPInput",
+      "label": "FTP Camel Config details"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "FTPConnectorImpl",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Message",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "message"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "host",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "host"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "port",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "port"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "userName",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "userName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "password",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "password"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "directoryName",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "directoryName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "filePath",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "filePath"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "protocol",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "protocol"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "operationMode",
+      "description": "",
+      "group": "FTPInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "operationMode"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Async before?",
+      "type": "Boolean",
+      "binding": {
+        "type": "property",
+        "name": "camunda:asyncBefore"
+      }
+    }
+  ]
+}

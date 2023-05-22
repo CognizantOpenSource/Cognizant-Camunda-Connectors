@@ -1,0 +1,187 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "AWS Lambda Operations via Camel",
+  "id": "616bad69-8811-44e7-b7e1-f07f6ecd1a24",
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Select Operation"
+    },
+    {
+      "id": "operationDetails",
+      "label": "Operation Details"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "AWSLambdaConnector",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Access Key",
+      "description": "Provide an access key of a user with permissions to invoke specified AWS Lambda Function",
+      "group": "authentication",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.accessKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Secret Key",
+      "description": "Provide a secret key of a user with permissions to invoke specified AWS Lambda Function",
+      "group": "authentication",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.secretKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Region",
+      "description": "Specify the AWS region",
+      "group": "authentication",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.region"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      }
+    },
+    {
+      "id": "operationType",
+      "group": "operation",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "List function",
+          "value": "listFunctions"
+        },
+        {
+          "name": "Invoke function (sync)",
+          "value": "invokeFunction"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.operationType",
+        "key": "inData.operationType"
+      }
+    },
+    {
+      "label": "Function name",
+      "description": "Enter a name, ARN or alias of your function",
+      "group": "operationDetails",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.functionName"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      },
+      "condition": {
+        "property": "operationType",
+        "oneOf": [
+          "invokeFunction"
+        ]
+      }
+    },
+    {
+      "label": "Payload",
+      "description": "Provide payload for your function as JSON",
+      "group": "operationDetails",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.payload"
+      },
+      "condition": {
+        "property": "operationType",
+        "oneOf": [
+          "invokeFunction"
+        ]
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

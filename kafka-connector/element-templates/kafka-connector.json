@@ -1,0 +1,98 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Kafka Connector Template",
+  "id": "b7400ffc-70cc-4172-90dc-3e577c0d4f5b",
+  "description": "Kafka outbound connector using camel",
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:ServiceTask"
+  ],
+  "groups": [
+    {
+      "id": "KafkaPublishInput",
+      "label": "Kafka config details"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "KafkaPulishImpl",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Message",
+      "description": "Data to send to Kafka",
+      "group": "KafkaPublishInput",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "message"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "topic name",
+      "description": "Name of the topic",
+      "group": "KafkaPublishInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "topicName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "host and port",
+      "description": "host name format host:port",
+      "group": "KafkaPublishInput",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "host"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Kafka Publish status variable",
+      "description": "Name of variable to store the response status",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Async before?",
+      "type": "Boolean",
+      "binding": {
+        "type": "property",
+        "name": "camunda:asyncBefore"
+      }
+    }
+  ]
+}

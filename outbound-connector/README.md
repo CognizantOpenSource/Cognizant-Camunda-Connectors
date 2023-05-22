@@ -1,0 +1,1 @@
+This module contains the camunda connector implementation bound with workflow, it invoke respective system connector implementaion code depending on the connectorId pass from workflow

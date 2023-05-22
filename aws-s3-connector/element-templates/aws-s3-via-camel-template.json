@@ -1,0 +1,191 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "AWS S3 via Camel Template",
+  "id": "d8df1da4-e750-485c-b53a-37b03ea96b15",
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "AWS Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "AWS S3"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "AWSS3Connector",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Access Key",
+      "description": "Provide an access key of AWS S3",
+      "type": "String",
+      "group": "authentication",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.accessKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Secret Key",
+      "description": "Provide a secret key of AWS S3",
+      "group": "authentication",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.secretKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Region",
+      "description": "Specify the AWS S3 region",
+      "group": "authentication",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.region"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      }
+    },
+    {
+      "label": "Operation type",
+      "id": "awsS3Operation",
+      "group": "operation",
+      "type": "Dropdown",
+      "editable": true,
+      "value": "listObjects",
+      "choices": [
+        {
+          "name": "listObjects",
+          "value": "listObjects"
+        },
+        {
+          "name": "listBuckets",
+          "value": "listBuckets"
+        },
+        {
+          "name": "getObject",
+          "value": "getObject"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.awsS3Operation",
+        "key": "inData.awsS3Operation"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Bucket Name",
+      "description": "Specify the AWS S3 Bucket",
+      "group": "operation",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.bucketName"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      }
+    },
+    {
+      "label": "Key",
+      "description": "Provide AWS S3 Object Key",
+      "group": "operation",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.key"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      },
+      "condition": {
+        "property": "awsS3Operation",
+        "oneOf": [
+          "getObject"
+        ]
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}
