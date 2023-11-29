@@ -8,7 +8,7 @@
 
 	<properties>
 		<version.connector-core>0.11.2</version.connector-core>
-		<version.logback>1.4.5</version.logback>
+		<version.logback>1.4.12</version.logback>
 		<version.slf4j>2.0.5</version.slf4j>
 		<version.jackson-bom>2.15.2</version.jackson-bom>
 		<version.jackson-datatype-jsr310>2.15.2</version.jackson-datatype-jsr310>
