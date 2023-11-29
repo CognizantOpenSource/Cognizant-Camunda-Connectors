@@ -19,9 +19,9 @@ download from the S/FTP in workflow.
 
 ##  FTP CONNECTOR  SAMPLE SCREENSHOTS  
 
-<img width="566" alt="FTP_1" src="https://github.com/CognizantCodeHub/IPR000820_CamundaCustomConnectors/assets/123737340/bb5fb551-aef6-4536-99ea-fece877e9a1f">
+<img width="566" alt="FTP_1" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/dcd97489-75ea-49cc-823e-23904d57b1f6">
 
-<img width="589" alt="FTP_2" src="https://github.com/CognizantCodeHub/IPR000820_CamundaCustomConnectors/assets/123737340/6820e0d3-1eef-457a-b790-683ee1bc7e2e">
+<img width="589" alt="FTP_2" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/d606461b-2568-4086-a577-74bbe277d1e5">
 
 
 To use camel ftp connector in your project follow below steps
