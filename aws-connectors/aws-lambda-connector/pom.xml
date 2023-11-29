@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>	
+	<artifactId>aws-lambda-connector</artifactId>
+	
+	<properties>
+		<version.common-module>1.0.0</version.common-module>
+	</properties>
+	
+	<parent>
+		<groupId>com.cts.eas.ipm.connector</groupId>
+		<artifactId>aws-connectors</artifactId>
+		<version>1.0.0</version>
+		<relativePath>..</relativePath>
+	</parent>
+  	
+	<dependencies>
+		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-aws2-lambda</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>common-module</artifactId>
+			<version>${version.common-module}</version>
+		</dependency>		
+	</dependencies>
+	
+	
+</project>

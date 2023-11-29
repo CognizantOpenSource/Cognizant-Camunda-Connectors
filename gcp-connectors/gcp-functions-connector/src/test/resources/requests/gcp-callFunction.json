@@ -1,0 +1,16 @@
+{
+    "inData": {
+	    "//_serviceAccountKey":  " Service Accouont key Json file Path location.",
+	   "//location":  "Location name ex: us-central1.",
+	    "//functionName":  "Functiona name  ex: function-1.",
+	    "//projectId":  "projectID   ex: psyched-freedom-394605.",
+    	   "serviceAccountKey":"FilePath\\filename.json", 
+	    "gcpFunctionsOperation": "callFunction",
+	    "location":"",
+	    "functionName": "",
+	    "gcpFunctionsOperation":"callFunction",
+	    "projectId":""               
+    },
+    "connectorId": "GCPFunctionsConnector"
+}
+

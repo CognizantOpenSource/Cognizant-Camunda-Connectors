@@ -1,0 +1,174 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "azure-servicebus-connector-via-camel",
+  "id": "c5ee38f6-4927-4e25-ba71-fec0d8754845",
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Select Operation"
+    },
+    {
+      "id": "operationDetails",
+      "label": "Operation Details"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "AzureServiceBusConnectorFunction",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Connection String",
+      "description": "Provide connection string of a user with permissions to send/ receive messages to Azure Service Bus",
+      "group": "authentication",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.connectionString"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "serviceBusType",
+      "label": "Service Bus Type",
+      "description": "The service bus type you want to choose",
+      "group": "operationDetails",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "queue",
+          "value": "queue"
+        },
+        {
+          "name": "topic",
+          "value": "topic"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.commonInputs.serviceBusType",
+        "key": "inData.commonInputs.serviceBusType"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Queue Name",
+      "description": "The queue you want to access",
+      "group": "operationDetails",
+      "feel": "optional",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.commonInputs.queueName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Producer Operation Definition",
+      "description": "Choose the producer operation type",
+      "group": "operationDetails",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Send Messages",
+          "value": "sendMessages"
+        },
+        {
+          "name": "Schedule Messages",
+          "value": "scheduleMessages"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.producerOperationDefinition",
+        "key": "inData.producer.producerOperationDefinition"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Message",
+      "description": "Enter the message",
+      "group": "operationDetails",
+      "type": "Text",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.payload"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

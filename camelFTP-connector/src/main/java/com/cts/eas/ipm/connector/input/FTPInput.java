@@ -3,7 +3,7 @@ package com.cts.eas.ipm.connector.input;
 
 import javax.validation.constraints.NotNull;
 
-import com.cts.eas.ipm.connector.outboundConnector.inputs.ConnectorInput;
+import com.cts.eas.ipm.connector.inputs.ConnectorInput;
 
 public class FTPInput extends ConnectorInput{
 	

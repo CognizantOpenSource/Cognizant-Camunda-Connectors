@@ -9,7 +9,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 
 import com.cts.eas.ipm.connector.constant.Constants;
 import com.cts.eas.ipm.connector.input.FTPInput;
-import com.cts.eas.ipm.connector.outboundConnector.CoreOutboundConnector;
+import com.cts.eas.ipm.connector.outbound.CoreOutboundConnector;
 
 import io.camunda.connector.api.outbound.OutboundConnectorContext;
 
@@ -20,7 +20,7 @@ public class FTPConnectorImpl implements CoreOutboundConnector{
 		
 		try (CamelContext context = new DefaultCamelContext();
 				ProducerTemplate producer = context.createProducerTemplate()) {
-			var input = connectorContext.getVariablesAsType(FTPInput.class);
+			var input = connectorContext.bindVariables(FTPInput.class);
 			// Validate connector input
 			connectorContext.validate(input);
 			

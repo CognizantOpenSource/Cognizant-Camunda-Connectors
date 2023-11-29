@@ -1,0 +1,16 @@
+{
+    "inData": {
+        "producer": {
+            "accountName": "camundablobstorage",
+            "containerName": "camundablobcontainer",
+            "blobOperationsDefinition" : "getBlob",
+            "blobName":"EH LINUX Commands"          
+        },
+        "operation": "PRODUCER"
+    },
+    "connectorId": "AzureBlobStorageConnector",
+    "authentication": {
+       "accessKey": "jquaabh44vWI5/n398w6agA+g6TvP7yfEHrXjV4eCLDfWdxAzNBmrSdSQgVy8re5DNVrrUwAXFEnxxxxxxxxxxxx",
+       "credentialType": "SHARED_ACCOUNT_KEY"
+    }
+}

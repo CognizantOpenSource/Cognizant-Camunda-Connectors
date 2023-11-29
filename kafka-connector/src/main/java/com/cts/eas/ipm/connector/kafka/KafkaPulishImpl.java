@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.cts.eas.ipm.connector.constant.Constants;
 import com.cts.eas.ipm.connector.input.KafkaPublishInput;
-import com.cts.eas.ipm.connector.outboundConnector.CoreOutboundConnector;
+import com.cts.eas.ipm.connector.outbound.CoreOutboundConnector;
 
 import io.camunda.connector.api.outbound.OutboundConnectorContext;
 
@@ -28,7 +28,7 @@ public class KafkaPulishImpl implements CoreOutboundConnector{
 				ProducerTemplate producer = context.createProducerTemplate();
 				KafkaComponent comp = new KafkaComponent()) {
 			logger.info("executing kafka publish");
-			KafkaPublishInput connectorInput = connectorContext.getVariablesAsType(KafkaPublishInput.class);
+			KafkaPublishInput connectorInput = connectorContext.bindVariables(KafkaPublishInput.class);
 			//Validate connector input
 			connectorContext.validate(connectorInput);
 			

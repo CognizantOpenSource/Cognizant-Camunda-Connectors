@@ -1,0 +1,224 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "azure-blob-storage-connector-via-camel",
+  "id": "3c8ed9c3-d0e9-4b13-8e44-69c395859d89",
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Select Operation"
+    },
+    {
+      "id": "operationDetails",
+      "label": "Operation Details"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "AzureBlobStorageConnectorFunction",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "credentialType",
+      "label": "Credential Type",
+      "group": "authentication",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Shared Account Key",
+          "value": "SHARED_ACCOUNT_KEY"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.credentialType",
+        "key": "authentication.credentialType"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Access Key",
+      "description": "Provide connection string of a user with permissions to send/ receive messages to Azure Service Bus",
+      "group": "authentication",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "authentication.accessKey"
+      },
+      "condition": {
+        "property": "credentialType",
+        "oneOf": [
+          "SHARED_ACCOUNT_KEY"
+        ]
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "operation",
+      "group": "operation",
+      "type": "Hidden",
+      "value": "PRODUCER",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.operation"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "blobOperationsDefinition",
+      "group": "operation",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "List Blob Containers",
+          "value": "listBlobContainers"
+        },
+        {
+          "name": "List Blobs",
+          "value": "listBlobs"
+        },
+        {
+          "name": "Get Blob",
+          "value": "getBlob"
+        },
+        {
+          "name": "Upload Block Blob",
+          "value": "uploadBlockBlob"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.blobOperationsDefinition",
+        "key": "inData.producer.blobOperationsDefinition"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "PRODUCER"
+        ]
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Account Name",
+      "description": "Enter account name of your Azure Storage",
+      "group": "operationDetails",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.accountName"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Container Name",
+      "description": "Enter container name of your Azure Storage account",
+      "group": "operationDetails",
+      "type": "String",
+      "feel": "optional",
+      "optional": true,
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.containerName"
+      }
+    },
+    {
+      "label": "Blob Name",
+      "description": "Enter Blob Name",
+      "group": "operationDetails",
+      "type": "String",
+      "feel": "optional",
+      "optional": true,
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.blobName",
+        "key": "inData.producer.blobName"
+      }
+    },
+    {
+      "label": "Payload",
+      "group": "operationDetails",
+      "type": "Text",
+      "feel": "optional",
+      "optional": true,
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.producer.payload",
+        "key": "inData.producer.payload"
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

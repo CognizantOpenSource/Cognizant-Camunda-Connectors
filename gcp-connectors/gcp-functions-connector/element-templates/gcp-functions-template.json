@@ -1,0 +1,164 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "gcp-functions-template",
+  "id": "6c67380c-5d3e-4520-9d3a-c99428c487ac",
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "GCP Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Google Cloud Functions"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "GCPFunctionsConnector",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Service Account Key",
+      "description": "Provide an service account key of GCP",
+      "type": "String",
+      "group": "authentication",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.serviceAccountKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Location",
+      "description": "Provide a Location of GCP ",
+      "type": "String",
+      "group": "authentication",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.location"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Operation Type",
+      "id": "gcpFunctionsOperation",
+      "group": "operation",
+      "type": "Dropdown",
+      "value": "getFunction",
+      "choices": [
+        {
+          "name": "Call Function ",
+          "value": "callFunction"
+        },
+        {
+          "name": "List Function ",
+          "value": "listFunctions"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.gcpFunctionsOperation",
+        "key": "inData.gcpFunctionsOperation"
+      }
+    },
+    {
+      "label": "Function Name",
+      "description": "Provide a Function Name of GCP ",
+      "type": "String",
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.functionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "gcpFunctionsOperation",
+        "oneOf": [
+          "callFunction"
+        ]
+      }
+    },
+    {
+      "label": "ProjectID",
+      "description": "Provide a ProjectID of GCP ",
+      "type": "String",
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.projectId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "gcp-storage-template",
+  "id": "6557d301-8b8b-4541-881c-14577d736118",
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "GCP Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Google Cloud Storage"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "outbound-connector",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "label": "connector-name",
+      "description": "connector id",
+      "type": "Hidden",
+      "value": "GCPStorageConnector",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "connectorId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Service Account Key",
+      "description": "Provide an service account key of GCP",
+      "type": "String",
+      "group": "authentication",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.serviceAccountKey"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "ProjectID",
+      "description": "Provide a ProjectID of GCP ",
+      "type": "String",
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.projectId"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Operation type",
+      "id": "gcpStorageOperation",
+      "group": "operation",
+      "type": "Dropdown",
+      "editable": true,
+      "value": "listObjects",
+      "choices": [
+        {
+          "name": "listObjects",
+          "value": "listObjects"
+        },
+        {
+          "name": "listBuckets",
+          "value": "listBuckets"
+        },
+        {
+          "name": "getObject",
+          "value": "getObject"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.gcpStorageOperation",
+        "key": "inData.gcpStorageOperation"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Bucket Name",
+      "description": "Specify the GCP Bucket",
+      "group": "operation",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.bucketName"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      },
+      "condition": {
+        "property": "gcpStorageOperation",
+        "oneOf": [
+          "getObject",
+          "listObjects"
+        ]
+      }
+    },
+    {
+      "label": "Object Name",
+      "description": "Provide GCP Object Name",
+      "group": "operation",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "inData.objectName"
+      },
+      "constraints": {
+        "notEmpty": true,
+        "maxLength": 255
+      },
+      "condition": {
+        "property": "gcpStorageOperation",
+        "oneOf": [
+          "getObject"
+        ]
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Enter name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/#bpmn-errors\" target=\"_blank\">documentation</a>",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

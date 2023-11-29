@@ -1,1 +1,1 @@
-This module contains the camunda connector implementation bound with workflow, it invoke respective system connector implementaion code depending on the connectorId pass from workflow
+This module contains the outbound camunda connector implementation, it invokes respective system connector implementaion (kafka, FTP, Azure, AWS, GCP) based on the connectorId input variable passed by respective connector template configured in the workflow

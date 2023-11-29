@@ -1,0 +1,17 @@
+{
+    "inData": {
+        "producer": {
+            "accountName": "camundablobstorage",
+            "containerName": "camundablobcontainer",
+            "blobOperationsDefinition" : "uploadBlockBlob",
+            "blobName":"EH LINUX Commands",    
+            "payload":"Hello, I'm again updating the file"      
+        },
+        "operation": "PRODUCER"
+    },
+    "connectorId": "AzureBlobStorageConnector",
+    "authentication": {
+       "accessKey": "jquaabh44vWI5/n398w6agA+g6TvP7yfEHrXjV4eCLDfWdxAzNBmrSdSQgVy8re5DNVrrUwAXFExxxxxxxxxx",
+       "credentialType": "SHARED_ACCOUNT_KEY"
+    }
+}
