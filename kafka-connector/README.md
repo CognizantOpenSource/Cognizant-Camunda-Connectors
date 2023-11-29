@@ -18,12 +18,11 @@ This article will explain how to invoke Kafkaconnector in a Camunda SaaS environ
 
 
 
+<img width="610" alt="kafka_1" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/e110791a-0a6e-4cab-9599-5776e75dcd57">
 
 
-<img width="610" alt="kafka_1" src="https://github.com/CognizantCodeHub/IPR000820_CamundaCustomConnectors/assets/123737340/7bc36903-3924-4bdb-8f4f-846f9efadd43">
+<img width="544" alt="kafka_2" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/668c7b07-de42-44bc-b88c-8822bf9238be">
 
-
-<img width="544" alt="kafka_2" src="https://github.com/CognizantCodeHub/IPR000820_CamundaCustomConnectors/assets/123737340/91b3d125-30c8-4984-882d-0da102f189c1">
 
 
 
