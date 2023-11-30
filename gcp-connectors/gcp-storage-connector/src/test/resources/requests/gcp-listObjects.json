@@ -1,9 +1,6 @@
 {
     "inData": {
-	    "//_serviceAccountKey":  " Service Accouont key Json file Path location.",
-	   "//projectId":  "projectID   ex: psyched-freedom-394605.",
-	     "//bucketName":  "Provide the bucket name Ex:camunda_bucket",
-          "serviceAccountKey":"",
+        "serviceAccountKey":"",
 	    "gcpStorageOperation": "listObjects",
 	    "bucketName": "",
 	    "projectId":""               

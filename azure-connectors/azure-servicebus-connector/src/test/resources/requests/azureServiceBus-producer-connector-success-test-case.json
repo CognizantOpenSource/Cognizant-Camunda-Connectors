@@ -11,6 +11,6 @@
     },
     "connectorId": "AzureServiceBusConnector",
     "authentication": {
-       "connectionString": "Endpoint=sb://camundaconnector.servicebus.windows.net/;SharedAccessKeyName=camundaconnectorpolicy;SharedAccessKey=1RlK3cAK9g8J7hmAr0YxZl22Z2J+ezOwy+xxxxxxxxxx;EntityPath=camundaconnector"
+       "connectionString": "Endpoint=XXX"
     }
 }

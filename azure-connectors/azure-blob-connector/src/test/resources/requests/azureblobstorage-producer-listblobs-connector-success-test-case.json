@@ -9,7 +9,7 @@
     },
     "connectorId": "AzureBlobConnector",
     "authentication": {
-       "accessKey": "jquaabh44vWI5/n398w6agA+g6TvP7yfEHrXjV4eCLDfWdxAzNBmrSdSQgVy8re5DNVrrUwAXFEnxxxxxxxx",
+       "accessKey": "XXX",
        "credentialType": "SHARED_ACCOUNT_KEY"
     }
 }

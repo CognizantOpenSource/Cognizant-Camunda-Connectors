@@ -11,7 +11,7 @@
     },
     "connectorId": "AzureBlobStorageConnector",
     "authentication": {
-       "accessKey": "jquaabh44vWI5/n398w6agA+g6TvP7yfEHrXjV4eCLDfWdxAzNBmrSdSQgVy8re5DNVrrUwAXFExxxxxxxxxx",
+       "accessKey": "XXX",
        "credentialType": "SHARED_ACCOUNT_KEY"
     }
 }

@@ -1,11 +1,6 @@
 {
     "inData": {
-	    "//_serviceAccountKey":  "serviceAccountKey Json file Path location.",
-	    "//message":  "Provide the message to be publish",
-	    "//projectId":  "provide the projectID   ex: psyched-freedom-394605.",
-	     "//topicName":  "Provide the topic name",
-	    
-            "serviceAccountKey":"",
+		"serviceAccountKey":"",
 	    "message":"",
 	    "topicName": "",
 	    "projectId":""               

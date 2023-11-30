@@ -1,10 +1,6 @@
 {
     "inData": {
-	     "//_serviceAccountKey":  " Service Accouont key Json file Path location.",
-	   "//bucketName":  "Provide the bucket name",
-	   "//projectId":  "projectID   ex: psyched-freedom-394605.",
-	     "//objectName":"providet the object name: ",
-           "serviceAccountKey":"",
+        "serviceAccountKey":"",
 	    "gcpStorageOperation": "getObject Ex:camel.txt",
 	    "bucketName": "",
 	    "objectName":"",

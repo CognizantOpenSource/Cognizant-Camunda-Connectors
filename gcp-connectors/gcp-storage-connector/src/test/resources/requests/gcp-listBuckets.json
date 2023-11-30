@@ -1,9 +1,6 @@
 {
     "inData": {
-           "//_serviceAccountKey":  " Service Accouont key Json file Path location.",
-	   "//projectId":  "projectID   ex: psyched-freedom-394605.",
-	     
-           "serviceAccountKey":"",
+		"serviceAccountKey":"",
 	    "gcpStorageOperation": "listBuckets",
 	     "projectId":""                  
     },
