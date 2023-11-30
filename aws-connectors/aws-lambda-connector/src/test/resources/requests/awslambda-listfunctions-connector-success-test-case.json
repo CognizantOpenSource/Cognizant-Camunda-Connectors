@@ -5,8 +5,8 @@
     },
     "connectorId": "AWSLambdaConnector",
     "authentication": {
-       "accessKey": "AKIAQBJH7W7J2TBJEO7Y",
-       "secretKey": "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",
-       "region": "us-east-1"
+       "accessKey": "xxxxxxxxxxxxxxxxxxxxxxx",
+       "secretKey": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+       "region": "us-xxxx-1"
     }
 }
