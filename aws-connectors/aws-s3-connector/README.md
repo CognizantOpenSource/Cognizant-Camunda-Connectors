@@ -34,12 +34,16 @@ The operation retrieves a single object metadata from a specified bucket. Follow
 
 ##### **SAMPLE SCREENSHOTS**
 1) Choose a template for service task
-   
+<img width="541" alt="AWS_S3_1" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/7436412b-0bc2-4311-a54c-65e05143659e">
+
 2) Enter the Config details as shown below for AWS S3 List Objects
+<img width="602" alt="AWS_S3_2" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/f060d83e-b0be-4f6d-995d-c933b21fbc57">
 
 3) Enter the Config details as shown below for AWS S3 List Buckets
+<img width="568" alt="AWS_S3_3" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/da0d9641-f245-4e5b-ab5e-f380439067e9">
 
 4) Enter the Config details as shown below for AWS S3 Get Object
+<img width="539" alt="AWS_S3_4" src="https://github.com/CognizantOpenSource/Cognizant-Camunda-Connectors/assets/123737340/4f0d4c9e-ea4e-498a-a818-bb3d41f23d00">
 
 
 
