@@ -1,15 +1,45 @@
-To use AWS S3 Camel connector in your project follow below steps:
+## SUMMARY
 
-1.	Use the connector template aws-s3-via-camel-template.json from element-templates folder 	inside aws-s3-connector
-2.	Publish the connector in Zeebe engine
-3.	Use the template on required service task, provide values for following fields :
-	a.	AWS Account credentials Details:
-		ï	Access Key - Provide an access key of AWS S3
-		ï	Secret Key - Provide a secret key of AWS S3
-		ï	Region     - Specify the AWS S3 region
-	b.	S3 Operation Configuration Details:
-		ï	Operation Type - Select AWS S3 Operation (ListObjects,ListBuckets,GetObject) from 			Dropdown
-		ï	Bucket Name    - Specify the AWS S3 Bucket
-		ï	Key - In case of ìGetObjectî operation type, specify Object Key value
-	c.	resultVariable ñ initialize with process variable name to capture response from AWSS3 		connector
-4.	After configuring above parameters in the service task it can be used to fetch the result 	of desired AWS S3 Operations (ListObjects, ListBuckets, GetObject) via Camel Route
+AWS S3 Connector enables to connect BPM process to Amazon‚Äôs Simple Storage Service that allows to perform retrieve operations. Currently, the AWS S3 Connector supports 3 types of retrieve operations: ListObjects, ListBuckets, GetObject.
+
+##### **PREREQUISITE**
+To use an AWS S3 Connector, need to have AWS Account Credentials, AWS Region, and Bucket Name. See the AWS S3 developer guide to learn more.
+The component requires the following credentials to authenticate with the AWS services:
+AWS ACCESS KEY - this is your Access Key ID when you created the AWS account.
+AWS ACCESS SECRET - this is your Secret access key given to you during the key creation.
+
+##### **SETTING UP CONNECTOR IN THE WORKFLOW**
+1) Load the connector template Json available in Git repo (aws-s3-connector\element-templates\ aws-s3-via-camel-template.json) into Camunda 8 (SAAS/Self-Managed)
+2) Apply the connector template on a service task which can be used to perform AWS S3 operations in the workflow.
+
+##### **OPERATIONS**
+
+###### **LIST OBJECTS**
+The operation lists the objects in a specific bucket. Follow below steps to configure.
+1) In AWS Authentication Section, set the AWS Account Credentials ‚Äì Access key, Secret key, and Region.
+2) In AWS Section, select the ‚ÄúlistObjects‚Äù operation type from the dropdown and set the Bucket Name from which the list of Objects needs to be retrieved.
+3) In Output Mapping Section, set the variable name in ‚ÄúResult Variable‚Äù field to store the response in a process variable.
+
+###### **LIST BUCKETS**
+The operation lists the buckets for this account in a specified region. Follow below steps to configure.
+1) In AWS Authentication Section, set the AWS Account Credentials ‚Äì Access key, Secret key, and Region.
+2) In AWS Section, select the ‚ÄúlistBuckets‚Äù operation type from the dropdown and set the Bucket Name.
+3) In Output Mapping Section, set the variable name in ‚ÄúResult Variable‚Äù field to store the response in a process variable.
+   
+###### **GET OBJECT**
+The operation retrieves a single object metadata from a specified bucket. Follow below steps to configure.
+1) In AWS Authentication Section, set the AWS Account Credentials ‚Äì Access key, Secret key, and Region.
+2) In AWS Section, select the ‚ÄúlistBuckets‚Äù operation type from the dropdown and set the Bucket Name.
+3) In Output Mapping Section, set the variable name in ‚ÄúResult Variable‚Äù field to store the response in a process variable.
+
+##### **SAMPLE SCREENSHOTS**
+1) Choose a template for service task
+   
+2) Enter the Config details as shown below for AWS S3 List Objects
+
+3) Enter the Config details as shown below for AWS S3 List Buckets
+
+4) Enter the Config details as shown below for AWS S3 Get Object
+
+
+
