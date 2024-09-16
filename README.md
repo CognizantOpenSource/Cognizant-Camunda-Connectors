@@ -4,23 +4,21 @@
 ##### **List of connectors**
 This project contains following set of Camunda outbound connectors which can be deployed as single application.
 
-1) aws-connectors
-     I) aws-lambda-connector
-    II) aws-s3-connector
-   III) aws-textract-connector
-3) azure-connectors
-    I) azure-blob-connector
-   II) azure-servicebus-connector(outbound)
-  III) azure-servicebus-connector(Inbound)
-4) gcp-connectors
-     I) gcp-functions-connector
-    II) gcp-storage-connector
-   III) gcp-pub-connector
-    IV) gcp-sub-connector	
-5) kafka-connector
-6) camelFTP-connector
-7) drools-connector
-8) pdf-generator-connector
+
+1) aws-lambda-connector
+2) aws-s3-connector
+3) aws-textract-connector
+4) azure-blob-connector
+5) azure-servicebus-connector(outbound)
+6) azure-servicebus-connector(Inbound)
+7) gcp-functions-connector
+8) gcp-storage-connector
+9) gcp-pub-connector
+10) gcp-sub-connector	
+11) kafka-connector
+12) camelFTP-connector
+13) drools-connector
+14) pdf-generator-connector
 
 ##### **Note: please refer to Readme file for each of the above connector modules to gain detailed understanding of each connector setup.**
 
