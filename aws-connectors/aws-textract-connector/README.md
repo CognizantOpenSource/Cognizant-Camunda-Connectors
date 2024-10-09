@@ -17,28 +17,31 @@ AWS ACCESS SECRET - this is your Secret access key given to you during the key c
 ###### **Analyze ID**
 This API will read and extract data from identity documents such U.S. Driver’s license, and U.S. Passports making it easy for customer to automate and expedite their document processing. You can immediately start extracting implicit fields like name, address, as well as explicit fields like date of birth, date of issue, date of expiry, ID #, ID type, and much more in the form of key- value pairs.
 1) In AWS Authentication Section, set the AWS Account Credentials – Access key, Secret key, and Region.
-   ![AWSTextract1](https://github.com/user-attachments/assets/d3333282-80e0-4199-bf16-4c3394d3ddd9)
+
+<img width="413" alt="AWS_1" src="https://github.com/user-attachments/assets/4c3cef2a-9cb3-457a-9443-24834d410a50">
 
 2) In AWS Section, enter the “analyzeId” operation type from the text box and enter the SourceDocument (local folder path where aws textract connector is hosted)  needs to be retrieved.
 3) In Output Mapping Section, set the variable name in “Result Variable” field to store the response in a process variable.
-![analyseidtextract](https://github.com/user-attachments/assets/20cdcd3b-8fd9-478a-9e48-71bad80bec50)
+
+<img width="339" alt="AWS_2" src="https://github.com/user-attachments/assets/e3b9a0d6-cad2-4270-bfc5-381419c0227a">
 
 ###### **Analyze Document**
 This API will read and extract data from documents as key/value pairs
 1) In AWS Authentication Section, set the AWS Account Credentials – Access key, Secret key, and Region.
-   ![AWSTextract1](https://github.com/user-attachments/assets/44ec3df3-840b-4f92-ab5d-da01adb405cf)
+<img width="407" alt="AWS_3" src="https://github.com/user-attachments/assets/6f136fe8-dd1f-41b2-b8ab-544d6d2a372f">
 
 2) In AWS Section, enter the “analyzeDocument” operation type from the text box and enter the SourceDocument (local folder path where aws textract connector is hosted)  needs to be retrieved.
 3) In Output Mapping Section, set the variable name in “Result Variable” field to store the response in a process variable.
-  ![analysedocumenttextract](https://github.com/user-attachments/assets/0803d3b0-6938-443c-b4eb-5ae6e5db57f3) 
+<img width="356" alt="AWS_4" src="https://github.com/user-attachments/assets/298b55e4-64cd-43d0-8843-1f292bf3b26b">
+
 ######
  **Analyze Expense**
 This API will read and extract data from invoices
 
 1) In AWS Authentication Section, set the AWS Account Credentials – Access key, Secret key, and Region.
-   ![AWSTextract1](https://github.com/user-attachments/assets/2cc9cc0e-0779-4a72-a5f0-1b7a4426c20d)
+<img width="406" alt="AWS_5" src="https://github.com/user-attachments/assets/cab3d996-bf53-4064-ae0a-2cbc9e3a3c67">
 
 2) In AWS Section, enter the “analyzeExpenses” operation type from the textbox and enter the SourceDocument (local folder path where aws textract connector is hosted)  needs to be retrieved.
 3) In Output Mapping Section, set the variable name in “Result Variable” field to store the response in a process variable.
    
-![analyseexpensestextract](https://github.com/user-attachments/assets/7f0d34c5-263f-4568-b755-f635bdbeca49)
+<img width="311" alt="AWS_6" src="https://github.com/user-attachments/assets/567a113e-131c-4bc4-bd4c-3c419d502e77">
