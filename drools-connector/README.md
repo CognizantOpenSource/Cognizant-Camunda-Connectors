@@ -15,8 +15,7 @@ This article will explain how to invoke drools in a SaaS environment using the d
 
    Please refer to the screenshot for further reference.
 
-
-<img width="834" alt="drools-start-event" src="https://github.com/user-attachments/assets/7481d0cf-c7d9-4a16-9000-ff449345dcb4">
+<img width="950" alt="drools_1" src="https://github.com/user-attachments/assets/b6663c81-d29b-4b0f-8632-ecf8e4b5234b">
 
 ##### **CONNECTOR RESPONSE**
 In **Output Mapping** section
