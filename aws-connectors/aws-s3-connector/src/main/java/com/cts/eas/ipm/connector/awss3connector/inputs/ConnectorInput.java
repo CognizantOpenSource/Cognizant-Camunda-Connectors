@@ -1,10 +1,9 @@
 package com.cts.eas.ipm.connector.awss3connector.inputs;
 
-import io.camunda.connector.api.annotation.Secret;
 
 public class ConnectorInput {
 
-	@Secret private AuthenticationRequestData authentication;
+	 private AuthenticationRequestData authentication;
 	private AWSS3ConnectorInput inData;
 	
 	public AuthenticationRequestData getAuthentication() {

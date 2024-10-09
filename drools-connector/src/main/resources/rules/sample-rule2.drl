@@ -1,0 +1,26 @@
+package rules;
+
+import com.cts.eas.ipm.connector.drools.config.RuleData;
+
+dialect  "mvel"
+
+rule "A"
+    when
+        orderObject : RuleData(product == "A" && price > 10000);
+    then
+        orderObject.setDiscount(10);
+end;
+
+rule "B"
+    when
+        orderObject : RuleData(product == "B" && price > 5000);
+    then
+        orderObject.setDiscount(20);
+end;
+
+rule "C"
+    when
+        orderObject : RuleData(product == "C" && price > 3000);
+    then
+        orderObject.setDiscount(30);
+end;

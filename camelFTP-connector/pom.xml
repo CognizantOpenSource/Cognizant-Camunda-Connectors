@@ -5,8 +5,8 @@
   <parent>
 		<groupId>com.cts.eas.ipm.connector</groupId>
 		<artifactId>ConnectorParentProject</artifactId>
-		<version>1.0.0</version>
-		<relativePath>..</relativePath>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
   
   <dependencies>
@@ -27,7 +27,7 @@
 	<dependency>
 		<groupId>com.cts.eas.ipm.connector</groupId>
 		<artifactId>common-module</artifactId>
-		<version>1.0.0</version>
+		<version>${project.version}</version>
 	</dependency>
   </dependencies>
 </project>

@@ -22,7 +22,7 @@ public class FTPConnectorImpl implements CoreOutboundConnector{
 				ProducerTemplate producer = context.createProducerTemplate()) {
 			var input = connectorContext.bindVariables(FTPInput.class);
 			// Validate connector input
-			connectorContext.validate(input);
+//			connectorContext.validate(input);
 			
 			if (input.getOperationMode().equalsIgnoreCase(Constants.PRODUCER_CONSTANT)) {
 				context.addRoutes(new FTPProducerRoute(input.getHost(), input.getUserName(), input.getPassword(),

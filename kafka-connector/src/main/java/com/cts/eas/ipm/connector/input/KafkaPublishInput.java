@@ -1,6 +1,6 @@
 package com.cts.eas.ipm.connector.input;
 
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 
 import com.cts.eas.ipm.connector.inputs.ConnectorInput;
 
@@ -8,9 +8,9 @@ import com.cts.eas.ipm.connector.inputs.ConnectorInput;
 public class KafkaPublishInput  extends ConnectorInput{
 	
 	private String message;
-	@NotNull
+//	@NotNull
 	private String topicName;
-	@NotNull
+//	@NotNull
 	private String host;
 	
 	public String getMessage() {

@@ -1,14 +1,10 @@
 package com.cts.eas.ipm.connector.awss3connector.inputs;
 
-import io.camunda.connector.api.annotation.Secret;
 
 public class AuthenticationRequestData {
 
-	@Secret
 	private String accessKey;
-	@Secret
 	private String secretKey;
-	@Secret
 	private String region;
 
 	public String getAccessKey() {

@@ -39,7 +39,7 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
 
 ### Code Contribution
 
-[JAVA 11](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+[JAVA 21](https://www.oracle.com/java/technologies/downloads/#java21)
 
 [Maven 3.8](http://maven.apache.org/download.cgi) or greater
 

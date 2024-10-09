@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cts.eas.ipm.connector</groupId>
+	<artifactId>cts-camunda-connectors</artifactId>
+	
+	<parent>
+		<groupId>com.cts.eas.ipm.connector</groupId>
+		<artifactId>ConnectorParentProject</artifactId>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+		
+	<dependencies>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>aws-lambda-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>aws-s3-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>aws-textract-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>kafka-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>camelFTP-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>azure-servicebus-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>azure-blob-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>gcp-storage-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>gcp-functions-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>gcp-pub-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>gcp-sub-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>drools-connector</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	
+</project>

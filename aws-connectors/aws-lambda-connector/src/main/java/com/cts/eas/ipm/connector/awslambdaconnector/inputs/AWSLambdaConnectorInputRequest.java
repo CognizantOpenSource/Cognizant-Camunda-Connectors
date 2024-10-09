@@ -1,20 +1,17 @@
 package com.cts.eas.ipm.connector.awslambdaconnector.inputs;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+//import javax.validation.Valid;
+//import javax.validation.constraints.NotNull;
 
-import io.camunda.connector.api.annotation.Secret;
 
 public class AWSLambdaConnectorInputRequest {
 
-	@Valid
-	@NotNull
-	@Secret
+//	@Valid
+//	@NotNull
 	private AWSLambdaConnectorInputs inData;
 
-	@Valid
-	@NotNull
-	@Secret
+//	@Valid
+//	@NotNull
 	private AuthenticationRequestData authentication ;
 
 	public AWSLambdaConnectorInputs getInData() {

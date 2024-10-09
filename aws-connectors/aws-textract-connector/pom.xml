@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>aws-textract-connector</artifactId>
+
+	<parent>
+		<groupId>com.cts.eas.ipm.connector</groupId>
+		<artifactId>aws-connectors</artifactId>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>2.26.29</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.google.cloud</groupId>
+				<artifactId>libraries-bom</artifactId>
+				<version>26.37.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>secretsmanager</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>textract</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-functions</artifactId>
+			<exclusions>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java-util</artifactId>
+				</exclusion>
+			</exclusions> 
+		</dependency>
+
+	</dependencies>
+</project>

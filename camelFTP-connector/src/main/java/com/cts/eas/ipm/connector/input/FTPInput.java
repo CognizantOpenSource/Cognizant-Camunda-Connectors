@@ -1,7 +1,7 @@
 package com.cts.eas.ipm.connector.input;
 
 
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 
 import com.cts.eas.ipm.connector.inputs.ConnectorInput;
 
@@ -9,28 +9,28 @@ public class FTPInput extends ConnectorInput{
 	
 	private String message;
 	
-	@NotNull
+//	@NotNull
 	private String host;
 
-	@NotNull
+//	@NotNull
 	private String port;
 	
-	@NotNull
+//	@NotNull
 	private String userName;
 	
-	@NotNull
+//	@NotNull
 	private String password;
 	
-	@NotNull
+//	@NotNull
 	private String directoryName;
 	
-	@NotNull
+//	@NotNull
 	private String filePath;
 	
-	@NotNull
+//	@NotNull
 	private String protocol;
 	
-	@NotNull
+//	@NotNull
 	private String operationMode;
 	
 	public String getPort() {

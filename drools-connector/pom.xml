@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.cts.eas.ipm.connector</groupId>
+		<artifactId>ConnectorParentProject</artifactId>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>drools-connector</artifactId>
+	<properties>
+		<drools.version>9.44.0.Final</drools.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>common-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-ci</artifactId>
+			<version>${drools.version}</version>
+			<exclusions>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.guava</groupId>
+				  <artifactId>guava</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java-util</artifactId>
+				</exclusion>
+			</exclusions> 
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<version>${drools.version}</version>
+			<exclusions>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>org.apache.commons</groupId>
+				  <artifactId>commons-compress</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>org.apache.poi</groupId>
+				  <artifactId>poi-ooxml</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>org.apache.poi</groupId>
+				  <artifactId>poi</artifactId>
+				</exclusion>
+			</exclusions> 
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-xml-support</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
+		<!-- upgrade to remove black duck vulnerability -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.27.1</version>
+		</dependency>
+
+		<!-- upgrade to remove black duck vulnerability -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.3.0</version>
+		</dependency>
+	</dependencies>
+
+</project>

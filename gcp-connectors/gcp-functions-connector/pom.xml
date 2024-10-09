@@ -3,41 +3,24 @@
 	<parent>
 		<groupId>com.cts.eas.ipm.connector</groupId>
 		<artifactId>gcp-connectors</artifactId>
-		<version>1.0.0</version>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>gcp-functions-connector</artifactId>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.google.cloud</groupId>
-				<artifactId>libraries-bom</artifactId>
-				<version>26.19.0</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.cloud</groupId>
 			<artifactId>google-cloud-functions</artifactId>
+			<exclusions>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java</artifactId>
+				</exclusion>
+				<exclusion>  <!-- excluded for vulnerability to upgrade to new version -->
+				  <groupId>com.google.protobuf</groupId>
+				  <artifactId>protobuf-java-util</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-
-		<dependency>
-			<groupId>com.cts.eas.ipm.connector</groupId>
-			<artifactId>common-module</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
-	
-		
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>5.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-
 	</dependencies>
 </project>

@@ -5,13 +5,22 @@
 	<parent>
 		<groupId>com.cts.eas.ipm.connector</groupId>
 		<artifactId>ConnectorParentProject</artifactId>
-		<version>1.0.0</version>
-		<relativePath>..</relativePath>
+		<version>3.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>aws-connectors</artifactId>
 	<packaging>pom</packaging>
 	<modules>
 		<module>aws-lambda-connector</module>
 		<module>aws-s3-connector</module>
+		<module>aws-textract-connector</module>
 	</modules>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.cts.eas.ipm.connector</groupId>
+			<artifactId>common-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>	
+	</dependencies>
 </project>

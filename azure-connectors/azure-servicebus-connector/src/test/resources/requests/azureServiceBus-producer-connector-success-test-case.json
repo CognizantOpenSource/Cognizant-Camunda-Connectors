@@ -1,16 +1,15 @@
 {
-    "inData": {
-        "producer": {            
-            "producerOperationDefinition": "sendMessages",            
-            "payload": "test"
-        },
-        "commonInputs": {
-        	"serviceBusType": "queue",
-        	"queueName": "camundaconnector"
-        }
-    },
-    "connectorId": "AzureServiceBusConnector",
-    "authentication": {
-       "connectionString": "Endpoint=XXX"
+  "inData": {
+    "producer": {
+      "producerOperationDefinition": "sendMessages",
+      "payload": "test",
+      "serviceBusType": "queue",
+      "queueName": "camundaconnector"
     }
+  },
+  "connectorId": "AzureServiceBusConnector",
+  "authentication": {
+    "type": "connectionStringAuth",
+    "connectionString": "Endpoint=XXX"
+  }
 }

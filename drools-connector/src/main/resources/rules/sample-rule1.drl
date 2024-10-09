@@ -1,0 +1,29 @@
+package rules;
+
+import com.cts.eas.ipm.connector.drools.config.RuleData;
+
+dialect  "mvel"
+
+rule "X"
+agenda-group "rule1"
+    when
+        orderObject : RuleData(product == "X" && price > 10000);
+    then
+        orderObject.setDiscount(10);
+end;
+
+rule "Y"
+agenda-group "rule1"
+    when
+        orderObject : RuleData(product == "Y" && price > 5000);
+    then
+        orderObject.setDiscount(20);
+end;
+
+rule "Z"
+agenda-group "rule1"
+    when
+        orderObject : RuleData(product == "Z" && price > 3000);
+    then
+        orderObject.setDiscount(30);
+end;

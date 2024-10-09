@@ -1,100 +1,99 @@
 package com.cts.eas.ipm.connector.azureservicebusconnector.outbound;
 
-import java.util.concurrent.CompletableFuture;
-
+import com.cts.eas.ipm.connector.azureservicebusconnector.inputs.ServiceBusRequest;
+import com.cts.eas.ipm.connector.azureservicebusconnector.inputs.enums.Operation;
+import com.cts.eas.ipm.connector.azureservicebusconnector.inputs.models.ProducerInputs;
+import com.cts.eas.ipm.connector.outbound.CoreOutboundConnector;
+import io.camunda.connector.api.outbound.OutboundConnectorContext;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Endpoint;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.endpoint.EndpointRouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cts.eas.ipm.connector.azureservicebusconnector.inputs.AzureServiceBusConnectorInput;
-import com.cts.eas.ipm.connector.azureservicebusconnector.inputs.dtos.Operation;
-import com.cts.eas.ipm.connector.outbound.CoreOutboundConnector;
+import java.util.concurrent.CompletableFuture;
 
-import io.camunda.connector.api.outbound.OutboundConnectorContext;
+import static com.cts.eas.ipm.connector.azureservicebusconnector.inputs.enums.Operation.PRODUCER;
 
 public class AzureServiceBusConnectorFunction implements CoreOutboundConnector {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AzureServiceBusConnectorFunction.class);
-	private static final String ROUTEID = "routeId";
-	private static final String ROUTETO = "direct:start";	
+    private static final Logger LOGGER = LoggerFactory.getLogger(AzureServiceBusConnectorFunction.class);
+    private static final String ROUTEID = "routeId";
+    private static final String ROUTETO = "direct:start";
 
-	private final CamelContext camelContext;
+    private final CamelContext camelContext;
 
-	public AzureServiceBusConnectorFunction() {
+    public AzureServiceBusConnectorFunction() {
 
-		super();		
-		this.camelContext = new DefaultCamelContext();
+        super();
+        this.camelContext = new DefaultCamelContext();
 
-	}
+    }
 
-	public AzureServiceBusConnectorFunction(CamelContext camelContext) {
+    public AzureServiceBusConnectorFunction(CamelContext camelContext) {
 
-		super();		
-		this.camelContext = camelContext;
+        super();
+        this.camelContext = camelContext;
 
-	}
+    }
 
-	public Object executeContext(OutboundConnectorContext context) {
+    public static String getRouteConstant(Operation operation) {
+        return ROUTETO + operation.getName();
+    }
 
-		Object result = null;
-		
-		var input = context.bindVariables(AzureServiceBusConnectorInput.class);
-		
-		try {
+    public static String setRouteId(Operation operation) {
+        return operation.getName() + ROUTEID;
+    }
 
-			camelContext.start();
+    public Object executeContext(OutboundConnectorContext context) {
 
-			result = produceMessages(camelContext, input);
+        Object result = null;
 
-		} catch (Exception e) {
+        var input = context.bindVariables(ServiceBusRequest.class);
 
-			e.printStackTrace();
+        try {
 
-		}
+            camelContext.start();
 
-		return result;
-	}
+            result = produceMessages(camelContext, input);
 
-	private Object produceMessages(CamelContext camelContext, AzureServiceBusConnectorInput connectorInput) throws Exception {
+        } catch (Exception e) {
 
-		try (ProducerTemplate producerTemplate = camelContext.createProducerTemplate()) {
+            e.printStackTrace();
 
-			camelContext.addRoutes(new EndpointRouteBuilder() {
+        }
 
-				@Override
-				public void configure() throws Exception {
+        return result;
+    }
 
-					from(getRouteConstant(Operation.PRODUCER))
-							.routeId(setRouteId(Operation.PRODUCER))
-							.to(azureServicebus(connectorInput.getInData().getCommonInputs().getQueueName())
-									.producerOperation(
-											connectorInput.getInData().getProducer().getProducerOperationDefinition())
-									.serviceBusType(connectorInput.getInData().getCommonInputs().getServiceBusType())
-									.connectionString(connectorInput.getAuthentication().getConnectionString()));
+    private Object produceMessages(CamelContext camelContext, ServiceBusRequest serviceBusRequest) throws Exception {
+        CompletableFuture<Object> response = null;
 
-				}
-			});
+        try (ProducerTemplate producerTemplate = camelContext.createProducerTemplate()) {
+            Endpoint endpoint = serviceBusRequest.getAuthentication().getEndpoint(serviceBusRequest, camelContext);
+            camelContext.addRoutes(new EndpointRouteBuilder() {
 
-			
-			CompletableFuture<Object> response = producerTemplate.asyncRequestBody(
-					getRouteConstant(Operation.PRODUCER),
-					connectorInput.getInData().getProducer().getPayload());
+                @Override
+                public void configure() throws Exception {
 
-			return response.join();
+                    from(getRouteConstant(PRODUCER))
+                            .routeId(setRouteId(PRODUCER))
+                            .to(endpoint);
 
-		}
+                }
+            });
 
-	}
+            if (serviceBusRequest.getInData() instanceof ProducerInputs producerInputs) {
+                response = producerTemplate.asyncRequestBody(
+                        getRouteConstant(PRODUCER),
+                        producerInputs.getPayload());
+            }
+            return response != null ? response.join() : null;
 
-	public static String getRouteConstant(Operation operation) {
-		return ROUTETO + operation.getOperationValue();
-	}
+        }
 
-	public static String setRouteId(Operation operation) {
-		return operation.getOperationValue() + ROUTEID;
-	}	
+    }
 
 }

@@ -30,7 +30,7 @@ public class KafkaPulishImpl implements CoreOutboundConnector{
 			logger.info("executing kafka publish");
 			KafkaPublishInput connectorInput = connectorContext.bindVariables(KafkaPublishInput.class);
 			//Validate connector input
-			connectorContext.validate(connectorInput);
+//			connectorContext.validate(connectorInput);
 			
 			comp.setConfiguration(new KafkaConfiguration());
 			comp.getConfiguration().setBreakOnFirstError(true);

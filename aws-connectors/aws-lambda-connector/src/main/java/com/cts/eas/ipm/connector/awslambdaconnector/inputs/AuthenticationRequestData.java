@@ -1,17 +1,16 @@
 package com.cts.eas.ipm.connector.awslambdaconnector.inputs;
 
-import javax.validation.constraints.NotEmpty;
+//import javax.validation.constraints.NotEmpty;
 
-import io.camunda.connector.api.annotation.Secret;
+
+//import io.camunda.connector.api.annotation.Secret;
 
 public class AuthenticationRequestData  {
 
-	@NotEmpty
-	@Secret
+//	@NotEmpty
 	private String accessKey;
 
-	@NotEmpty
-	@Secret
+//	@NotEmpty
 	private String secretKey;
 
 	private String region;
